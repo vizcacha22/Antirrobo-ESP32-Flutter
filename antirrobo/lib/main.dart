@@ -1,66 +1,99 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'package:flutter/material.dart';
+import 'package:flutter_blue/flutter_blue.dart';
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key}); 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Bluetooth App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
 
-  final String title;
+class _MyHomePageState extends State<MyHomePage> {
+  FlutterBlue flutterBlue = FlutterBlue.instance;
+  late BluetoothDevice _connectedDevice;
+  late StreamSubscription<BluetoothDeviceState> _connectionSubscription;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  void initState() {
+    super.initState();
+    startScan();
+  }
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
+  @override
+  void dispose() {
+    _connectionSubscription?.cancel();
+    super.dispose();
+  }
+
+  void startScan() {
+    flutterBlue.startScan(timeout: Duration(seconds: 4));
+    var subscription = flutterBlue.scanResults.listen((results) {
+      for (ScanResult r in results) {
+        if (r.device.name == 'NombreDeTuDispositivo') {
+          // Reemplaza con el nombre de tu dispositivo
+          flutterBlue.stopScan();
+          connectToDevice(r.device);
+          break;
+        }
+      }
     });
+  }
+
+  void connectToDevice(BluetoothDevice device) async {
+    await device.connect();
+    _connectedDevice = device;
+    _connectionSubscription = _connectedDevice.state.listen((state) {
+      if (state == BluetoothDeviceState.disconnected) {
+        showDisconnectionMessage();
+      }
+    });
+  }
+
+  void showDisconnectionMessage() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Desconexión de Bluetooth'),
+          content: Text('Se ha desconectado el dispositivo Bluetooth.'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-   return Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text('Bluetooth App'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: _connectedDevice == null
+            ? Text('Buscando dispositivos Bluetooth...')
+            : Text('Conectado a ${_connectedDevice.name}'),
       ),
     );
   }
