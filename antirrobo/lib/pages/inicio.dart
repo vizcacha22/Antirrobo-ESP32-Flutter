@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
-import 'dart:ui';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_app/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Inicio extends StatelessWidget {
+  const Inicio({super.key});
+
   @override
   Widget build(BuildContext context) {
     return 
     Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFFFFFFFF),
       ),
       child: Container(
-        padding: EdgeInsets.fromLTRB(22, 61, 36, 69.4),
+        padding: const EdgeInsets.fromLTRB(22, 61, 36, 69.4),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(14, 0, 0, 49),
+              margin: const EdgeInsets.fromLTRB(14, 0, 0, 49),
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image: AssetImage(
@@ -29,30 +28,30 @@ class Inicio extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: Container(
+                child: const SizedBox(
                   width: 312,
                   height: 290,
                 ),
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(6.5, 0, 0, 68),
+              margin: const EdgeInsets.fromLTRB(6.5, 0, 0, 68),
               child: Text(
                 'Protege tu celular',
                 style: GoogleFonts.getFont(
                   'Josefin Sans',
                   fontWeight: FontWeight.w500,
                   fontSize: 48,
-                  color: Color(0xFF747373),
+                  color: const Color(0xFF747373),
                 ),
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 83),
+              margin: const EdgeInsets.fromLTRB(0, 0, 0, 83),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
-                color: Color(0xFFEFDFDF),
-                boxShadow: [
+                color: const Color(0xFFEFDFDF),
+                boxShadow: const [
                   BoxShadow(
                     color: Color(0x80000000),
                     offset: Offset(10, 10),
@@ -61,24 +60,24 @@ class Inicio extends StatelessWidget {
                 ],
               ),
               child: Container(
-                padding: EdgeInsets.fromLTRB(24.3, 14, 24.3, 8),
+                padding: const EdgeInsets.fromLTRB(24.3, 14, 24.3, 8),
                 child: Text(
                   'Ingrese su nombre',
                   style: GoogleFonts.getFont(
                     'Mukta',
                     fontWeight: FontWeight.w500,
                     fontSize: 24,
-                    color: Color(0xFFAFA1A1),
+                    color: const Color(0xFFAFA1A1),
                   ),
                 ),
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 49),
+              margin: const EdgeInsets.fromLTRB(0, 0, 0, 49),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
-                color: Color(0xFFEFDFDF),
-                boxShadow: [
+                color: const Color(0xFFEFDFDF),
+                boxShadow: const [
                   BoxShadow(
                     color: Color(0x80000000),
                     offset: Offset(10, 10),
@@ -87,24 +86,24 @@ class Inicio extends StatelessWidget {
                 ],
               ),
               child: Container(
-                padding: EdgeInsets.fromLTRB(24, 14, 24, 8),
+                padding: const EdgeInsets.fromLTRB(24, 14, 24, 8),
                 child: Text(
                   'Ingrese nombre de persona de confianza',
                   style: GoogleFonts.getFont(
                     'Mukta',
                     fontWeight: FontWeight.w500,
                     fontSize: 24,
-                    color: Color(0xFFAFA1A1),
+                    color: const Color(0xFFAFA1A1),
                   ),
                 ),
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 70.5),
+              margin: const EdgeInsets.fromLTRB(0, 0, 0, 70.5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
-                color: Color(0xFFEFDFDF),
-                boxShadow: [
+                color: const Color(0xFFEFDFDF),
+                boxShadow: const [
                   BoxShadow(
                     color: Color(0x80000000),
                     offset: Offset(10, 10),
@@ -113,23 +112,23 @@ class Inicio extends StatelessWidget {
                 ],
               ),
               child: Container(
-                padding: EdgeInsets.fromLTRB(24, 14, 24, 8),
+                padding: const EdgeInsets.fromLTRB(24, 14, 24, 8),
                 child: Text(
                   'Ingrese número de persona de confianza',
                   style: GoogleFonts.getFont(
                     'Mukta',
                     fontWeight: FontWeight.w500,
                     fontSize: 24,
-                    color: Color(0xFFAFA1A1),
+                    color: const Color(0xFFAFA1A1),
                   ),
                 ),
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(1, 0, 0, 142.5),
+              margin: const EdgeInsets.fromLTRB(1, 0, 0, 142.5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Color(0x40000000),
                     offset: Offset(0, 4),
@@ -144,8 +143,8 @@ class Inicio extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
-                        color: Color(0xFFEFDFDF),
-                        boxShadow: [
+                        color: const Color(0xFFEFDFDF),
+                        boxShadow: const [
                           BoxShadow(
                             color: Color(0x80000000),
                             offset: Offset(10, 10),
@@ -153,21 +152,21 @@ class Inicio extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: Container(
+                      child: const SizedBox(
                         width: 59,
                         height: 62,
                       ),
                     ),
                   ),
             Container(
-                    padding: EdgeInsets.fromLTRB(18, 0, 18.9, 0),
+                    padding: const EdgeInsets.fromLTRB(18, 0, 18.9, 0),
                     child: Text(
                       '+',
                       style: GoogleFonts.getFont(
                         'Mukta',
                         fontWeight: FontWeight.w800,
                         fontSize: 40,
-                        color: Color(0xFFAFA1A1),
+                        color: const Color(0xFFAFA1A1),
                       ),
                     ),
                   ),
@@ -177,8 +176,8 @@ class Inicio extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
-                color: Color(0xFFBC7C7C),
-                boxShadow: [
+                color: const Color(0xFFBC7C7C),
+                boxShadow: const [
                   BoxShadow(
                     color: Color(0x80000000),
                     offset: Offset(10, 10),
@@ -188,14 +187,14 @@ class Inicio extends StatelessWidget {
               ),
               child: Container(
                 width: 456,
-                padding: EdgeInsets.fromLTRB(0, 14, 2.8, 8),
+                padding: const EdgeInsets.fromLTRB(0, 14, 2.8, 8),
                 child: Text(
                   'Continuar',
                   style: GoogleFonts.getFont(
                     'Mukta',
                     fontWeight: FontWeight.w500,
                     fontSize: 24,
-                    color: Color(0xFF000000),
+                    color: const Color(0xFF000000),
                   ),
                 ),
               ),

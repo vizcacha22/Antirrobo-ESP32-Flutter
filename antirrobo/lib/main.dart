@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_app/pages/chat.dart';
 import 'package:flutter_app/pages/inicio.dart';
 
 
@@ -11,12 +10,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter App',
+    return const MaterialApp(
+      title: 'Antirrobo',
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
 
-        body: Chat(),
-        // body: Inicio(),
+        body: Inicio(),
 
       ),
     );
